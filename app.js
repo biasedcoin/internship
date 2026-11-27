@@ -34,14 +34,9 @@ app.get("/find", async (req, res) => {
     res.json(data);
 });
 
-app.get("/infosys", async (req, res) => {
-    const data = await Internship.find({ Company: "Infosys" });
-    res.json(data);
-});
-
-app.put("/complete/:id", async (req, res) => {
+app.post("/complete", async (req, res) => {
     await Internship.updateOne(
-        { Student_ID: req.params.id },
+        { Student_ID: req.body.Student_ID },
         { $set: { Status: "Completed" } }
     );
     res.send("Internship status updated");
