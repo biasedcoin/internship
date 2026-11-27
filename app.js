@@ -29,6 +29,11 @@ app.post("/add", async (req, res) => {
     res.send("Internship details inserted");
 });
 
+app.get("/find", async (req, res) => {
+    const data = await Internship.find({ Company: req.query.Company });
+    res.json(data);
+});
+
 app.get("/infosys", async (req, res) => {
     const data = await Internship.find({ Company: "Infosys" });
     res.json(data);
